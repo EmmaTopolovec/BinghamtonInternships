@@ -18,6 +18,9 @@ msg['From'] = 'BinghamtonInternships@gmail.com'
 msg['To'] = 'BinghamtonInternships@gmail.com'
 
 # Send the message
-s = smtplib.SMTP('localhost')
+# s = smtplib.SMTP('localhost')
+s = smtplib.SMTP('smtp.gmail.com', 587)
+s.starttls()
+s.login(msg['From'], 'password')
 s.send_message(msg)
 s.quit()
