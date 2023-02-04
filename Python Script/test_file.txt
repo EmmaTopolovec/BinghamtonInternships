@@ -1,0 +1,6 @@
+Hello,
+
+This is a test email.
+
+Sincerely,
+Binghamton Internships Bot
