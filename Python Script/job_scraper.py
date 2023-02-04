@@ -25,7 +25,15 @@ with open("job_results.txt", "w") as output_file:
         listing_results = listing_info.get_dict()
         listing_link = listing_results['search_metadata']['google_jobs_listing_url']
 
-        job_info = "%s\nCompany: %s\nLocation: %s\n%s\n" \
+        is_thumbnail = 'thumbnail' in job
+        thumbnail = ""
+        if is_thumbnail:
+            thumbnail = job['thumbnail']
+        else:
+            thumbnail = ""
+        job_info = "%s\n" % thumbnail
+
+        job_info += "%s\nCompany: %s\nLocation: %s\n%s\n" \
                     % (job['title'], job['company_name'], job['location'], job['via'])
         for extra in job['extensions']:
             job_info += "%s | " % extra
