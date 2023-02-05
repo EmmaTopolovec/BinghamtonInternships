@@ -2,10 +2,11 @@ from serpapi import GoogleSearch
 
 params = {
   "engine": "google_jobs",
-  "q": "Computer Science",
-  "ltype": "1", # remote
+  "q": "Computer Science Internship",
+  # "ltype": "1", # remote
+  "location": "New York",
   "hl": "en", # english speaking
-  "chips": "date_posted:week,", # posted in the last week
+  "chips": "date_posted:week", # posted in the last week
   "api_key": "key"
 }
 
@@ -13,7 +14,7 @@ search = GoogleSearch(params)
 results = search.get_dict()
 job_results = results["jobs_results"]
 
-with open("job_results.txt", "w") as output_file:
+with open("Python Script/job_results.txt", "w") as output_file:
     for job in job_results:
 
         listing_params = {

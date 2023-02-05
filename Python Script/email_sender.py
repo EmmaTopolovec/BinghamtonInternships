@@ -6,6 +6,18 @@ import email
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+# firebase stuff
+
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+cred = credentials.Certificate("Python Script/secret-key.json")
+app = firebase_admin.initialize_app(cred)
+firestore_client = firestore.client()
+
+ref = firestore_client.collection('emails').document('email-list')
+
 # Make email object
 msg = MIMEMultipart("alternative")
 
@@ -16,18 +28,18 @@ msg['To'] = 'BinghamtonInternships@gmail.com'
 
 # Create the plain-text and HTML version of the message
 text = text = """ \
-Binghamton CS Internships Newsletter
+Binghamton Internship Newsletter
 
 Below are last week's CS Internships:
 
 """
 
 html = ""
-with open("email_template.html") as fp:
-    html += fp.read()[:-210]
+with open("Python Script/email_template.html") as fp:
+    html += fp.read()[:-233]
 
 # Email contents filename
-filename = 'job_results.txt'
+filename = 'Python Script/job_results.txt'
 
 # Open and read file, then process it to send as an email
 with open(filename) as fp:
@@ -61,7 +73,7 @@ Unsubscribe: https://google.com
 html += """\
         <div>
             <p>Newsletter created by <a href="https://github.com/EmmaTopolovec">Emma Topolovec</a></p>
-            <a href="https://www.google.com">Unsubscribe</a>
+            <a href="https://binghamton.web.app/unsubscribe.html">Unsubscribe</a>
         </div>
 
     </body>
@@ -79,5 +91,9 @@ msg.attach(html_email) # email will attempt to render this first
 s = smtplib.SMTP('smtp.gmail.com', 587)
 s.starttls()
 s.login(msg['From'], 'password')
-s.send_message(msg)
+all_emails = []
+for addr in ref.get().to_dict()['arrayField']:
+    all_emails = all_emails + [addr]
+print(all_emails)
+s.send_message(msg, msg['From'], [msg['To']] + all_emails)
 s.quit()
