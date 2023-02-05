@@ -1,0 +1,30 @@
+body {
+    background: rgb(255, 255, 255);
+}
+img {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 125px;
+    height: 125px;
+}
+form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+div.form {
+    display: block;
+    text-align: center;
+}
+div {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#submit-button {
+    text-align: center;
+}

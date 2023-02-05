@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Binghamton Internships</title>
+        <link rel='stylesheet' href='css/style.css'>
+        <link rel="icon" href="https://i.ibb.co/5hBPNQZ/logo.png">
+    </head>
+    <body>
+
+        <div>
+            <img src="https://i.ibb.co/5hBPNQZ/logo.png">
+            <h1>Binghamton Internship Newsletter</h1>
+        </div>
+
+        <div>
+            <form id = "email-form">
+                <label for="email">Email:</label>
+                <input type="email" id="email-input" name="email"><br><br>
+                <input id="submit-button" type="submit" value="Subscribe">
+            </form>
+            <p id="success"></p>
+        </div>
+
+        <br><br>
+
+        <div>
+            <h3>What is this newsletter?</h3>
+            <p>This is a weekly newsletter that sends out opportunities that are specially picked out <br>
+                for Binghamton undergraduate CS students. Job and internship postings are scraped from <br>
+                the web and compiled into the newsletter using a Python script every week. Enter your <br>
+                email address above and click subscribe to be added to the list. <br>
+                You can unsubscribe anytime <a href="https://binghamton.web.app/unsubscribe.html">here</a>.<br>
+                <br>
+                This website and the newsletter bot was created by <a href="https://github.com/EmmaTopolovec/BinghamtonInternships">Emma Topolovec</a>.</p>
+        </div>
+
+
+
+        <script src="/__/firebase/7.15.5/firebase-app.js"></script>
+
+        <script src="/__/firebase/7.15.5/firebase-analytics.js"></script>
+        <script src="/__/firebase/7.15.5/firebase-database.js"></script>
+        <script src="/__/firebase/7.15.5/firebase-auth.js"></script>
+        <script src="/__/firebase/7.15.5/firebase-firestore.js"></script>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
